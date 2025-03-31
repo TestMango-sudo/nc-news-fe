@@ -1,0 +1,13 @@
+User Stories:
+
+MVP:
+1. As a user, can I see a list of all articles
+2. As a user, can I see a list of my articles 
+3. As a user, can I post a comment on a given article
+
+Addtional:
+4. As a user, can I delete a comment.
+5. As a user, can I serve up a single article by it's id?
+6. As a user can I show comments for a given article?
+7. As a user can show all the available topics?
+8.  as a user can I sort the articles on screen?
