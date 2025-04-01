@@ -1,7 +1,7 @@
 import { Component, useEffect, useState } from "react"
 import { getAllArticles, getSingleArticle } from "../api"
 import ArticleListBox from "./ArticleListBox"
-import { data, Link, useNavigate } from "react-router-dom"
+import { data, Link, useNavigate } from "react-router"
 
 
 function Articles() { 
@@ -13,7 +13,6 @@ function Articles() {
 
     useEffect(() => { 
         getAllArticles().then((data) => { 
-            console.log(data.data.articles)
             setArticleData(data.data.articles)
             setIsLoading(false)
         })
@@ -22,19 +21,21 @@ function Articles() {
     const handleClick = (article) => { 
         const article_id = article.article_id
         getSingleArticle(article_id).then((data) => { 
-           
-            setSingleArticle(data.data.article)
+            const article = {...data.data.article}
+            setSingleArticle(article)
         })
-        console.log(singleArticle, "From CLICK HANDLE")
-        //navigate("/article", singleArticle={singleArticle})
+        navigate("/article", { state: article})
 
     } 
+    const goBack = () => { 
+        setSingleArticle(null)
+    }
 
     return (
         <section id="articles-listing">
             <ul>
-                {isLoading ? <img src="./src/images/loading.gif" alt="loading articles" /> : !singleArticle ?
-                    articleData.map((article) =>
+                {isLoading ? <div><img src="./src/images/loading.gif" alt="loading articles" /><p>Loading Articles</p></div> : 
+                       articleData.map((article) =>
                         <ul onClick={() => handleClick(article)} key={article.article_id}>
                             <h2>{article.title}</h2>
                             <p>By {article.author}</p>
@@ -42,15 +43,8 @@ function Articles() {
                             <p>Posted: {article.created_at}</p>
                             <p>Votes: {article.votes} 👍</p>
                             <img src={article.article_img_url} />
+                            
                         </ul>)
-                    :
-                    <ul><h2>{singleArticle.title}</h2>
-                        <p>By {singleArticle.author}</p> 
-                        <p>{singleArticle.body}</p>
-                        <p>Posted: {singleArticle.created_at}</p>
-                        <p>Votes: {singleArticle.votes} 👍</p>
-                        <img src={singleArticle.article_img_url} />
-                    </ul>
                 }
             </ul>
         </section>
@@ -58,4 +52,5 @@ function Articles() {
 }
 
 export default Articles
+
 

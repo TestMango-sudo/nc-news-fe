@@ -11,7 +11,6 @@ function getAllArticles() {
     })
 }
 function getSingleArticle(id) { 
-    console.log(id, "FROM API")
     return api.get(`/articles/${id}`).then((data) => {
         return data
     }).catch((err) => { 

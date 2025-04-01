@@ -71,3 +71,7 @@
       /* optional height as needed - this example makes the container fill the full viewport height*/
     }
  }
+
+ #controls{
+  background-color: lightcoral;
+ }
