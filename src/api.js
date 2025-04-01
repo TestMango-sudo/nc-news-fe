@@ -18,4 +18,13 @@ function getSingleArticle(id) {
     })
 }
 
-export { getAllArticles, getSingleArticle }
+function getCommentsByArticleId(id) {
+    return api.get(`articles/${id}/comments`).then((data) => {
+        return data.data
+    }).catch((err) => { 
+        window.alert(err)
+    })
+
+}
+
+export { getAllArticles, getSingleArticle, getCommentsByArticleId}

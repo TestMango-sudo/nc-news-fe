@@ -71,7 +71,12 @@
       /* optional height as needed - this example makes the container fill the full viewport height*/
     }
  }
-
+#comment-box{
+  background-color: #ddd;
+  border-radius: 20px;
+   box-shadow: 10px 5px 5px antiquewhite;;
+   margin: 5px;
+}
  #controls{
   background-color: lightcoral;
  }
