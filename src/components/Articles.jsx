@@ -1,14 +1,13 @@
-import { useEffect, useState } from "react"
-import { getAllArticles } from "../api"
+import { Component, useEffect, useState } from "react"
+import { getAllArticles, getSingleArticle } from "../api"
 import ArticleListBox from "./ArticleListBox"
 import { data, Link, useNavigate } from "react-router-dom"
 
 
 function Articles() { 
-
+    const [singleArticle, setSingleArticle] = useState(null)
     const [articleData, setArticleData] = useState(null)
     const [isLoading, setIsLoading] = useState(true)
-    const [clickedArticle, setClickedArticle] = useState(null)
     const navigate = useNavigate();
     
 
@@ -20,41 +19,43 @@ function Articles() {
         })
     }, [])
 
-    const handleClick = (event) => { 
-        console.log(event.target, "<<1.handle.lcik")
-        setClickedArticle(event.target)
-        console.log(clickedArticle)
-        return ArticleListBox(clickedArticle)
-        navigate("/article")
-        
-    }
+    const handleClick = (article) => { 
+        const article_id = article.article_id
+        getSingleArticle(article_id).then((data) => { 
+           
+            setSingleArticle(data.data.article)
+        })
+        console.log(singleArticle, "From CLICK HANDLE")
+        //navigate("/article", singleArticle={singleArticle})
+
+    } 
+
     return (
         <section id="articles-listing">
-            <div>
-                {!articleData ? <p>Loading Articles...</p> : articleData.map((article) => 
-                    <button onClick={handleClick} value={article.data} key={article.article_id}>
-                        <ul className="article-item" >
+            <ul>
+                {isLoading ? <img src="./src/images/loading.gif" alt="loading articles" /> : !singleArticle ?
+                    articleData.map((article) =>
+                        <ul onClick={() => handleClick(article)} key={article.article_id}>
                             <h2>{article.title}</h2>
                             <p>By {article.author}</p>
                             <p>{article.body}</p>
                             <p>Posted: {article.created_at}</p>
                             <p>Votes: {article.votes} 👍</p>
-                            <img src={article.article_img_url}/>
-                        </ul>
-                    </button>
-            )}
-            </div>
+                            <img src={article.article_img_url} />
+                        </ul>)
+                    :
+                    <ul><h2>{singleArticle.title}</h2>
+                        <p>By {singleArticle.author}</p> 
+                        <p>{singleArticle.body}</p>
+                        <p>Posted: {singleArticle.created_at}</p>
+                        <p>Votes: {singleArticle.votes} 👍</p>
+                        <img src={singleArticle.article_img_url} />
+                    </ul>
+                }
+            </ul>
         </section>
     )
 }
 
 export default Articles
 
-//  title: "Running a Node App",
-//     topic: "coding",
-//     author: "jessjelly",
-//     body: "This is part two of a series on how to get up and running with Systemd and Node.js. This part dives deeper into how to successfully run your app with systemd long-term, and how to set it up in a production environment.",
-//     created_at: 1604728980000,
-//     votes: 0,
-//     article_img_url:
-//       "https://im

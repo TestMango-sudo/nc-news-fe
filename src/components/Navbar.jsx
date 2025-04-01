@@ -3,7 +3,7 @@ import { Link } from "react-router"
 function Navbar() { 
 
     return (
-        <section>
+    <section id="navigation">
         <nav className="topnav">
             <a href="/">Home</a>
             <a herf="/myaccount/">My Account</a>

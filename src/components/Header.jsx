@@ -4,7 +4,7 @@ function Header() {
     return (
         <header>
             <img alt="NC-News-logo"></img>
-            <h1>I'm Header</h1>
+            <h1>Northcoder's News</h1>
             
             
       </header>

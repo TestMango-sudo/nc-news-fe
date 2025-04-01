@@ -10,5 +10,13 @@ function getAllArticles() {
         window.alert(err)
     })
 }
+function getSingleArticle(id) { 
+    console.log(id, "FROM API")
+    return api.get(`/articles/${id}`).then((data) => {
+        return data
+    }).catch((err) => { 
+        window.alert(err)
+    })
+}
 
-export { getAllArticles }
+export { getAllArticles, getSingleArticle }

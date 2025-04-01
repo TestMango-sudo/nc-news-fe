@@ -1,3 +1,8 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -28,19 +33,25 @@
 }
 
  /* The navbar container */
+ #navigation {
+  width: 100%;
+ }
  .topnav {
+   width: 100%;
    overflow: hidden;
    background-color: lightcoral;
+   margin-bottom: 10px;
  }
 
  .topnav a {
-   float: left;
    width:30%;
-   display: block;
+   display: inline-block;
    color: #f2f2f2;
    text-align: center;
    padding: 14px 16px;
    text-decoration: none;
+   margin-left: auto;
+   margin-right: auto;
  }
 
  /* Links - change color on hover */
