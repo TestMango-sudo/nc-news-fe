@@ -1,11 +1,9 @@
-import { Component, useEffect, useState } from "react"
-import { getAllArticles, getSingleArticle } from "../api"
-import ArticleListBox from "./ArticleListBox"
+import { useEffect, useState } from "react"
+import { getAllArticles} from "../api"
 import { data, Link, useNavigate } from "react-router"
 
 
 function Articles() { 
-    const [singleArticle, setSingleArticle] = useState(null)
     const [articleData, setArticleData] = useState(null)
     const [isLoading, setIsLoading] = useState(true)
     const navigate = useNavigate();
