@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { Component, useState } from 'react'
 import './App.css'
 import { Routes, Route, data, useParams} from 'react-router-dom'
 import Header from './components/Header'
@@ -20,7 +20,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Articles />}/>
-        <Route path="/article/:article_id" element={<ArticleListBox/>}/>
+        <Route path="/article/:article_id" element={<ArticleListBox />} />
         <Route path="/myaccount"/>
       </Routes>
     </>

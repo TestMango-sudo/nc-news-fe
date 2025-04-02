@@ -20,11 +20,7 @@ function Articles() {
 
     const handleClick = (article) => { 
         const article_id = article.article_id
-        // getSingleArticle(article_id).then((data) => { 
-        //     const article = {...data.data.article}
-        //     setSingleArticle(article)
-        // })
-        navigate(`/article/${article_id}`) //, { state: article})
+        navigate(`/article/${article_id}`) 
 
     } 
     const goBack = () => { 

@@ -6,8 +6,6 @@ import { getCommentsByArticleId, AddVote, getSingleArticle, MinusVote } from "..
 const ArticleListBox = () => {
     const navigate = useNavigate();
     const { article_id } = useParams()
-    // const location = useLocation();
-    // const data = location.state;
     const [selectedArticle, setSelectedArticle] = useState(null)
     const [commentData, setCommentData] = useState(null)
     const [isLoading, setIsLoading] = useState(true)
@@ -15,7 +13,6 @@ const ArticleListBox = () => {
     
     const getComments = () => {
         getCommentsByArticleId(article_id).then(( data ) => {
-            console.log(data, "<<COMMENTS")
             setCommentData(data.comments)
         })
 } 
