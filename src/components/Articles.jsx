@@ -20,11 +20,7 @@ function Articles() {
 
     const handleClick = (article) => { 
         const article_id = article.article_id
-        getSingleArticle(article_id).then((data) => { 
-            const article = {...data.data.article}
-            setSingleArticle(article)
-        })
-        navigate("/article", { state: article})
+        navigate(`/article/${article_id}`) 
 
     } 
     const goBack = () => { 
@@ -33,13 +29,13 @@ function Articles() {
 
     return (
         <section id="articles-listing">
-            <ul>
+            <ul id="article-container">
+                <h2>All Articles</h2>
                 {isLoading ? <div><img src="./src/images/loading.gif" alt="loading articles" /><p>Loading Articles</p></div> : 
                        articleData.map((article) =>
-                        <ul onClick={() => handleClick(article)} key={article.article_id}>
+                        <ul onClick={() => handleClick(article)} key={article.article_id} className="article-item">
                             <h2>{article.title}</h2>
                             <p>By {article.author}</p>
-                            <p>{article.body}</p>
                             <p>Posted: {article.created_at}</p>
                             <p>Votes: {article.votes} 👍</p>
                             <img src={article.article_img_url} />
