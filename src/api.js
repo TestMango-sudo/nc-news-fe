@@ -20,11 +20,24 @@ function getSingleArticle(id) {
 
 function getCommentsByArticleId(id) {
     return api.get(`articles/${id}/comments`).then((data) => {
-        return data.data
+        return data.data.comments
     }).catch((err) => { 
         window.alert(err)
     })
 
 }
 
-export { getAllArticles, getSingleArticle, getCommentsByArticleId}
+function AddVote(id) {
+    return api.patch(`articles/${id}`, {inc_votes: 1}).then((response) => {
+        return response
+    })
+}
+
+function MinusVote(id) {
+    return api.patch(`articles/${id}`, {inc_votes: -1}).then((response) => {
+        console.log(response.data)
+        return response
+    })
+}
+
+export { getAllArticles, getSingleArticle, getCommentsByArticleId, AddVote, MinusVote}

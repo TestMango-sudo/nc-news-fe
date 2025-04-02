@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import './App.css'
-import { Routes, Route, data} from 'react-router-dom'
+import { Routes, Route, data, useParams} from 'react-router-dom'
 import Header from './components/Header'
 import Navbar from './components/Navbar'
 import Articles from './components/Articles'
@@ -20,7 +20,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Articles />}/>
-        <Route path="/article" element={<ArticleListBox />} />
+        <Route path="/article/:article_id" element={<ArticleListBox/>}/>
         <Route path="/myaccount"/>
       </Routes>
     </>
