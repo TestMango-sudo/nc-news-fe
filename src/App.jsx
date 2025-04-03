@@ -5,6 +5,7 @@ import Header from './components/Header'
 import Navbar from './components/Navbar'
 import Articles from './components/Articles'
 import ArticleListBox from './components/ArticleListBox'
+import MyAccount from './components/MyAccount'
 
 function App() {
   const currentUser = {
@@ -16,12 +17,12 @@ function App() {
 
   return (
     <>
-      <Header />
+      <Header currentUser={ currentUser} />
       <Navbar />
       <Routes>
         <Route path="/" element={<Articles />}/>
-        <Route path="/article/:article_id" element={<ArticleListBox />} />
-        <Route path="/myaccount"/>
+        <Route path="/articles/:article_id" element={<ArticleListBox currentUser={currentUser} />} />
+        <Route path="/myaccount" element={<MyAccount currentUser={currentUser}/> } />
       </Routes>
     </>
   )

@@ -24,8 +24,8 @@ body {
   }
 }
 .header{ 
-  padding: 5px;
-  margin: 10px;
+  padding: 25px;
+  margin: 20px;
   display: inline-flex;
   background: rgb(240, 128, 128);
   /* background: radial-gradient(circle, rgba(240, 128, 128, 1) 51%, rgba(243, 167, 167, 1) 90%, rgba(248, 248, 249, 1) 100%, rgba(248, 248, 249, 1) 100%); */
@@ -37,6 +37,12 @@ body {
   width: 125px;
   height: 125px;
   border-radius: 25px;
+}
+
+#user-pic{
+  width: 100px;
+  height: 100px;
+  border-radius: 50px;
 }
 
 .article-item {
