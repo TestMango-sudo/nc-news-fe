@@ -1,5 +1,4 @@
-function Header() { 
-
+function Header({ currentUser }) { 
 
     return (
         <header className="header">
@@ -7,6 +6,10 @@ function Header() {
             <div>
                 <h1>Northcoder's News</h1> 
                 <p>The only place to come for everything Northcoders</p>
+            </div>
+            <div>
+                <img src={currentUser.avatar_url} alt="User Avatar" id="user-pic"></img>
+                <p>Logged in: {currentUser.username }</p>
             </div>
       </header>
     )

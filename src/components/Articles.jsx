@@ -18,7 +18,7 @@ function Articles() {
 
     const handleClick = (article) => { 
         const article_id = article.article_id
-        navigate(`/article/${article_id}`) 
+        navigate(`/articles/${article_id}`) 
 
     } 
     const goBack = () => { 

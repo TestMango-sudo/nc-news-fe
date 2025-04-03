@@ -1,23 +1,18 @@
 import { React, Route, useEffect, useState } from "react"
 import { Link, useLocation, useParams, useNavigate, data } from "react-router"
 import { getCommentsByArticleId, AddVote, getSingleArticle, MinusVote } from "../api";
+import PostComment from "./PostComment";
 
 
-const ArticleListBox = () => {
+const ArticleListBox = ({currentUser}) => {
     const navigate = useNavigate();
     const { article_id } = useParams()
     const [selectedArticle, setSelectedArticle] = useState(null)
     const [commentData, setCommentData] = useState(null)
     const [isLoading, setIsLoading] = useState(true)
+    const [seen, setSeen] = useState(false)
     
     
-    const getComments = () => {
-        getCommentsByArticleId(article_id).then(( data ) => {
-            setCommentData(data.comments)
-        })
-} 
-    
-
     useEffect(() => {
         getSingleArticle(article_id).then((data) => { 
             setSelectedArticle(data.data.article)
@@ -30,16 +25,20 @@ const ArticleListBox = () => {
             setCommentData(data)
         })
         }, [selectedArticle])
-
+    
+    const addComment = () => { 
+        setSeen(!seen)
+    }
+    
     const increaseVote = () => {
         AddVote(selectedArticle.article_id).then((data) => { 
-            navigate(`/article/${selectedArticle.article_id}`)
+            navigate(`/articles/${selectedArticle.article_id}`)
         })
     }
 
      const decreaseVote = () => {
         MinusVote(selectedArticle.article_id).then((data) => { 
-            navigate(`/article/${selectedArticle.article_id}`)
+            navigate(`/articles/${selectedArticle.article_id}`)
         })
     }
     
@@ -60,8 +59,9 @@ const ArticleListBox = () => {
                     <a href="/">Back to All Articles</a>
                     <Link onClick={increaseVote}>Up-vote 👍</Link>
                     <Link onClick={decreaseVote}>Down-vote 👎</Link>
-                    <Link>Add Comment</Link>
-                </div>
+                    <Link onClick={addComment}>Add Comment</Link>
+            </div>
+            {seen ? <PostComment toggle={addComment} article_id={article_id} setSeen={ setSeen} /> : null}
             <h2>Comments Section</h2>
                 {!commentData ? <div><img src="./src/images/loading.gif" alt="loading comments" /><p>Loading Comments</p></div> : commentData.map((comment) => {
                     return <ul key={comment.comment_id} id="comment-box">
@@ -72,7 +72,7 @@ const ArticleListBox = () => {
                     </ul>
                 })
                 }
-            </section>
+        </section>
     </div>
 }
 
