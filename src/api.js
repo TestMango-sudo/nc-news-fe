@@ -47,4 +47,10 @@ function postCommentByArticleId({ username, body, article_id }) {
     })
 }
 
-export { getAllArticles, getSingleArticle, getCommentsByArticleId, AddVote, MinusVote, postCommentByArticleId}
+function deleteCommentById(id) { 
+    return api.delete(`/comments/${id}`).then((response) => { 
+        return response
+    })
+}
+
+export { getAllArticles, getSingleArticle, getCommentsByArticleId, AddVote, MinusVote, postCommentByArticleId, deleteCommentById}

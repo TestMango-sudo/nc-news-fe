@@ -1,6 +1,6 @@
-import { React, Route, useEffect, useState } from "react"
-import { Link, useLocation, useParams, useNavigate, data } from "react-router"
-import { getCommentsByArticleId, AddVote, getSingleArticle, MinusVote } from "../api";
+import { React, useEffect, useState } from "react"
+import { Link, useParams, useNavigate } from "react-router"
+import { getCommentsByArticleId, AddVote, getSingleArticle, MinusVote, deleteCommentById } from "../api";
 import PostComment from "./PostComment";
 
 
@@ -40,6 +40,19 @@ const ArticleListBox = ({currentUser}) => {
         MinusVote(selectedArticle.article_id).then((data) => { 
             navigate(`/articles/${selectedArticle.article_id}`)
         })
+     }
+    
+    const deleteMyComment= (event) =>{ 
+        event.preventDefault()
+        const comment_id = event.target.value
+        if (window.confirm("Are you sure you want to delete this comment?")) {
+            deleteCommentById(comment_id).then((data) => {  
+        })
+        }
+        else {
+            navigate(`/articles/${selectedArticle.article_id}`)
+        }
+        
     }
     
     return <div className="single-list-article">
@@ -68,7 +81,8 @@ const ArticleListBox = ({currentUser}) => {
                         <h3 id="comment-author">posted by {comment.author}</h3>
                         <p>{comment.body}</p>
                         <p>Posted at:{comment.created_at}</p>
-                        <p>Votes: {comment.votes } 👍</p> <a> Like Comment</a>
+                        <p>Votes: {comment.votes} 👍</p> <button> Like Comment</button>
+                        {comment.author === currentUser.username ? <button onClick={deleteMyComment} value={comment.comment_id }>Delete Comment</button> : null}
                     </ul>
                 })
                 }
