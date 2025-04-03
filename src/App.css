@@ -109,6 +109,19 @@ body {
       /* optional height as needed - this example makes the container fill the full viewport height*/
     }
  }
+
+ #topic-selector {
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size:medium;
+  font-weight:bold;
+  color:black;
+  background-color: rgb(240, 128, 128);
+  margin: 10px;
+  padding: 10px;
+  border: 5px;
+  width:20%, 
+ }
+
 #comment-box{
   background-color: #ddd;
   border-radius: 20px;
