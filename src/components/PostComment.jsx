@@ -12,11 +12,8 @@ function PostComment({ article_id },setSeen ) {
         postCommentByArticleId(formValues)
         window.alert("Comment Added Successfully")
         setSeen(false)
-        navigate(`/articles/${article_id}`)
-        
+        navigate(`/articles/${article_id}`)    
     }
-       
-
 
     return (
         <section className="popup">
@@ -24,7 +21,7 @@ function PostComment({ article_id },setSeen ) {
         <h2>Add Comment</h2>
             <form onSubmit={handleSumbit}>
                 <h3>User: 'grumpy19'</h3>
-                <label>Enter your comment: <input inputMode="text" name="comment"></input></label>
+                <label>Enter your comment: <input inputMode="text" name="comment" required></input></label>
                     <button type="submit" >Submit</button>
             </form>
             </div>
