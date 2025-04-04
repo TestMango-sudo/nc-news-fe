@@ -1,4 +1,4 @@
-import { Component, useState } from 'react'
+import { Component} from 'react'
 import './App.css'
 import { Routes, Route, data, useParams} from 'react-router-dom'
 import Header from './components/Header'
@@ -8,8 +8,8 @@ import ArticleListBox from './components/ArticleListBox'
 import TopicDisplay from './components/TopicDisplay'
 import MyAccount from './components/MyAccount'
 
+
 function App() {
-  const [topic, setTopic] = useState('all')
   const currentUser = {
     username: 'grumpy19',
     name: 'Paul Grump',
@@ -24,7 +24,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Articles />}/>
         <Route path="/articles/:article_id" element={<ArticleListBox currentUser={currentUser} />} />
-        {/* <Route path="articles/topics/:topic" element={<TopicDisplay />} />  */}
+        <Route path="/articles/topics/:topic" element={<TopicDisplay />} />
         <Route path="/myaccount" element={<MyAccount currentUser={currentUser}/> } />
       </Routes>
     </>
