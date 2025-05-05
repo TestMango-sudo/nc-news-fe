@@ -45,6 +45,7 @@ function Articles({ }) {
         let newArray = sortArrayByColumn(articleData, sortColumn, event.target.value)
         console.log(newArray)
         setArticleData(newArray)
+        indow.location.reload()
     }
 
     const getSortColumn = (event) => {
@@ -53,6 +54,7 @@ function Articles({ }) {
         let newArray = sortArrayByColumn(articleData, event.target.value, sortOrder)
         console.log(newArray)
         setArticleData(newArray)
+        window.location.reload()
     }
     
     return (
@@ -64,7 +66,7 @@ function Articles({ }) {
                     <select id="topic-selector" onChange={handleCategory}>
                     <option disabled>Choose a topic</option>
                     <option value="all">Show All</option>    
-                        {topics.map((topic) => <option key={topic.slug } name={ topic.slug} value={topic.slug}>{ topic.slug}</option>)}
+                        {topics.map((topic) => <option key={topic.slug} name={topic.slug} value={topic.slug}>{topic.slug}</option>)}
                         </select>
                 </label>
                 <label>Sort by
@@ -82,8 +84,9 @@ function Articles({ }) {
                     </select>
                 </label>
                 </div>
-                {isLoading ? <div><img src="./src/images/loading.gif" alt="loading articles" /><p>Loading Articles</p></div> :
-                     articleData.map((article) =>
+                <div>
+                {isLoading ? <div><img src="./src/images/loading.gif" alt="loading comments" /><p>Loading Comments</p></div>:<ul><p></p></ul> }
+                { articleData.map((article) =>
                         <ul onClick={() => handleClick(article)} key={article.article_id} className="article-item">
                             <h2>{article.title}</h2>
                             <p>By {article.author}</p>
@@ -93,7 +96,7 @@ function Articles({ }) {
                             
                         </ul>)
                 }
-                
+                </div> 
             </ul>
         </section>
     )

@@ -1,4 +1,5 @@
 import axios from "axios"
+import { Navigate } from "react-router"
 
 
 const api = axios.create({ baseURL: "https://nc-news-backend-boh2.onrender.com/api/" })
@@ -32,13 +33,15 @@ function getSingleArticle(id) {
     return api.get(`/articles/${id}`).then((data) => {
         return data
     }).catch((error) => {
-        if (error.response) {
-            return response.data
-        } else if (error.request) {
-            return error.request
-        } else 
-            // Something happened in setting up the request that triggered an Error
-            return ('Article not found', error.message);
+        console.log(error.message, "<<")
+        return error.message
+        // if (error.response) {
+        //     Navigate("*", {params : error.message}) //response.data
+        // } else if (error.request) {
+        //     return {'400': error.message}
+        // } else 
+        //     // Something happened in setting up the request that triggered an Error
+        //     return ('Article not found', error.message);
     })
 }
 
@@ -46,7 +49,7 @@ function getCommentsByArticleId(id) {
     return api.get(`articles/${id}/comments`).then((data) => {
         return data.data.comments
     }).catch((error) => { 
-        return ('Article not found', error)
+        console.log(error.message)
     })
 
 }

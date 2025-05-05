@@ -4,15 +4,15 @@
 }
 
 body {
-  width: 80%;
-  min-height: 100%;
-  min-width: 100%;
+  min-height: 80%;
+  min-width: 65%; 
   background-image:url("../src/images/galerie-newspapers-black-white-wallpaper-0@lg.webp");
   background-repeat: repeat-y repeat-x;
+  margin: auto;
 
 }
 #root {
-  max-width: 80%;
+  max-width: 65%;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
@@ -24,8 +24,9 @@ body {
   }
 }
 .header{ 
-  box-sizing:initial;
-  width: 65%;
+  
+  width: 45%;
+  height: 15%;
   box-shadow: 10px 5px 5px black;
   padding: 25px;
   margin: 20px;
@@ -34,24 +35,29 @@ body {
   /* background: radial-gradient(circle, rgba(240, 128, 128, 1) 51%, rgba(243, 167, 167, 1) 90%, rgba(248, 248, 249, 1) 100%, rgba(248, 248, 249, 1) 100%); */
   border-radius: 25px;
   vertical-align: center;
+  font-family:  "Germania One", system-ui;
+  font-size: larger;
 }
 
 #logo{
-  width: 125px;
-  height: 125px;
-  border-radius: 25px;
+    width: 145px;
+    height: 165px;
+    border-radius: 25px;
+    margin: 10px;
 }
 
 #user-pic{
   width: 100px;
   height: 100px;
   border-radius: 50px;
+  margin: 10px;
 }
-
 
  /* The navbar container */
  #navigation {
-  width: 100%;
+  width: 80%;
+  align-self: center;
+  margin: auto;
  }
  .topnav {
   box-shadow: 10px 5px 5px black;
@@ -63,9 +69,9 @@ body {
  }
 
  .topnav a {
-   width:22%;
+   width:25%;
    display: inline-block;
-   color: #f2f2f2;
+   color: black;
    text-align: center;
    padding: 14px 16px;
    text-decoration: none;
@@ -85,7 +91,7 @@ body {
   box-sizing: border-box;
 } 
 #article-container{
-  background-color: lightgray;
+  background-color:silver;
   border-radius: 25px;
   box-shadow: 10px 5px 5px black;
 }
@@ -96,16 +102,15 @@ body {
       /* center horizontally */
       align-items: center;
       /* center vertically (if container has height) */
-      height: 100vh;
+     
       /* optional height as needed - this example makes the container fill the full viewport height*/
     }
  }
 
  .article-item {
-   min-width: 0;
    display: block;
    padding: 2em;
-   margin: 20px;
+   margin: 30px;
    background-color: antiquewhite;
    border-radius: 20px;
    box-shadow: 10px 5px 5px grey;
@@ -113,7 +118,8 @@ body {
 
  #article-image {
    min-width: 0;
-   width: 50%;
+   width: 40%;
+   height: 25%s;
  }
 
  #topic-selector {
@@ -156,8 +162,31 @@ body {
   background-color: #ddd;
   border-radius: 20px;
   box-shadow: 10px 5px 5px black;
-  margin: 5px;
+  margin: 10px;
 }
  #controls{
   background-color: lightcoral;
  }
+
+ .bottom-nav {
+  box-shadow: 10px 5px 5px black;
+   border-radius: 25px;
+   width: 100%;
+   overflow: hidden;
+   background-color: lightcoral;
+   margin-bottom: 10px;
+ }
+ .bottom-nav a{
+      width:22%;
+    display: inline-block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    margin-left: auto;
+    margin-right: auto;
+ }
+ .bottom-nav a:hover {
+  background-color: #ddd;
+  color: black;
+}

@@ -4,7 +4,7 @@ function Header({ currentUser }) {
         <header className="header">
             <img src="../src/images/colour-logo.png" alt="NC-News-logo" id="logo"></img>
             <div>
-                <h1 id="site-name">Northcoder's News</h1> 
+                <h1 id="site-name">Northcoders News</h1> 
                 <p id="site-tag">The only place to come for everything Northcoders</p>
             </div>
             <div>

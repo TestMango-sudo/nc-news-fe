@@ -5,18 +5,24 @@ import { sortArrayByColumn } from "../utils"
 
 function TopicDisplay() {
     let { topic } = useParams()
+    const [selectedTopic, setSelectedTopic] = useState(topic)
     const [articlesByTopic, setArticlesByTopic] = useState([])
     const [topics, setTopics] = useState([])
     const [Loading, setLoading] = useState(true)
     const navigate = useNavigate();
     const [sortOrder, setSortOrder] = useState('descending')
     const [sortColumn, setSortColumn] = useState('date')
+    const [newError, setNewError] = useState(null)
     
     useEffect(() => { 
         getArticlesbyTopic(topic).then((data) => { 
             setArticlesByTopic(data.articles)
+        }).catch(error => {
+            console.log(topic, newError)
+            setNewError('Topic not Found, please try again.')
         })
         getTopics().then((data) => {
+           data.push ({slug: 'Show All'})
             setTopics(data)
         }).finally(
             setLoading(false)
@@ -29,13 +35,11 @@ function TopicDisplay() {
     } 
     
     const handleCategory = (event) => {
-        let newNav = `articles/topics/${event.target.value}`
-        console.log(newNav, "<<<<")
-        if (event.target.value = "all") {
+        if (event.target.value === "Show All"){
             navigate("/")
-        }
-        else {
-            navigate(newNav)
+        } else{ 
+        navigate(`/articles/topics/${event.target.value}`)
+        window.location.reload()
         }
      }
      
@@ -45,6 +49,7 @@ function TopicDisplay() {
         let newArray = sortArrayByColumn(articlesByTopic, sortColumn, event.target.value)
         console.log(newArray)
         setArticlesByTopic(newArray)
+        window.location.reload()
     }
 
     const getSortColumn = (event) => {
@@ -52,8 +57,11 @@ function TopicDisplay() {
         setSortColumn(col)
         let newArray = sortArrayByColumn(articlesByTopic, event.target.value, sortOrder)
         setArticlesByTopic(newArray)
+        window.location.reload()
     }
-
+    if (newError) {
+        return <div className="single-list-article"><ul className="article-item"><h3>{newError}</h3></ul></div>
+    } else
         return (
         <section id="articles-listing">
             <ul id="article-container">
@@ -61,8 +69,7 @@ function TopicDisplay() {
                 <div id='article-nav'>
                 <label>Choose a topic
                     <select id="topic-selector" onChange={handleCategory}>
-                    <option disabled>Choose a topic</option>
-                    <option value="all">Show All</option>    
+                    <option disabled>Choose a topic</option>  
                         {topics.map((topic) => <option key={topic.slug } name={ topic.slug} value={topic.slug}>{ topic.slug}</option>)}
                             </select>
                 </label>
@@ -81,7 +88,7 @@ function TopicDisplay() {
                     </select>
                 </label>
                 </div>
-                {Loading ? <div><img src="./src/images/loading.gif" alt="loading articles" /><p>Loading Articles</p></div> : articlesByTopic.map((article) => {
+                <div>{Loading ?<ul><img src="./src/images/loading.gif" alt="loading articles" /><p>Loading Articles</p></ul>: articlesByTopic.map((article) => {
                            return <ul onClick={() => handleClick(article)} key={article.article_id} className="article-item">
                                 <h2>{article.title}</h2>
                                 <p>By {article.author}</p>
@@ -90,7 +97,7 @@ function TopicDisplay() {
                                 <img src={article.article_img_url} />
                             </ul>
                     })
-                 }
+                 } </div> 
             </ul>
         </section>
     )
