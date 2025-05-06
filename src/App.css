@@ -40,7 +40,6 @@ body {
 }
 
 #logo{
-    background-image: url('../src/images/colour-logo.png');
     width: 145px;
     height: 165px;
     border-radius: 25px;

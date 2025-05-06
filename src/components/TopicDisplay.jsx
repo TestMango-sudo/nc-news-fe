@@ -88,7 +88,7 @@ function TopicDisplay() {
                     </select>
                 </label>
                 </div>
-                <div>{Loading ?<ul><img src="./src/images/loading.gif" alt="loading articles" /><p>Loading Articles</p></ul>: articlesByTopic.map((article) => {
+                <div>{Loading ?<ul><img src="/loading.gif" alt="loading articles" /><p>Loading Articles</p></ul>: articlesByTopic.map((article) => {
                            return <ul onClick={() => handleClick(article)} key={article.article_id} className="article-item">
                                 <h2>{article.title}</h2>
                                 <p>By {article.author}</p>

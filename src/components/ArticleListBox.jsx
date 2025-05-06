@@ -31,6 +31,9 @@ const ArticleListBox = ({ currentUser }) => {
     }, [selectedArticle])
     
     const addComment = () => {
+        if (!currentUser){
+            alert("Please log in to add a comment")
+        } else
         setSeen(!seen)
     }
     
@@ -74,7 +77,7 @@ const ArticleListBox = ({ currentUser }) => {
     return (
         <section>  
         <div className="single-list-article">    
-            {isLoading ? <div><img src="./src/images/loading.gif" alt="loading comments" /><p>Loading Comments</p></div> :
+            {isLoading ? <div><img src="loading.gif" alt="loading comments" /><p>Loading Comments</p></div> :
                 <ul className="article-item">
                     <h2>{selectedArticle.title}</h2>
                     <h3>By {selectedArticle.author}</h3>

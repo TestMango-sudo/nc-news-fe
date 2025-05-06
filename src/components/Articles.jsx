@@ -85,7 +85,7 @@ function Articles({ }) {
                 </label>
                 </div>
                 <div>
-                {isLoading ? <div><img src="./src/images/loading.gif" alt="loading comments" /><p>Loading Comments</p></div>:<ul><p></p></ul> }
+                {isLoading ? <div><img src="/loading.gif" alt="loading comments" /><p>Loading Comments</p></div>:<ul><p></p></ul> }
                 { articleData.map((article) =>
                         <ul onClick={() => handleClick(article)} key={article.article_id} className="article-item">
                             <h2>{article.title}</h2>
