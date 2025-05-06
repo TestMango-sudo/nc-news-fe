@@ -1,14 +1,14 @@
-#NC News Front End Project
+# NC News Front End Project
 
 This is a front end UI for the PSQL database hosted during the creation of the NC (Northcoders) News back end project, which was hosted on Render https://nc-news-backend-boh2.onrender.com.
 
 To access the front End UI for this. Access the following link: 
-https://6819cbc3a2234b9f905c4f26--newsatnorthcoders.netlify.app
+https://newsatnorthcoders.netlify.app
 
 Minimum requirements:
 Node.js version 23.9.0 or greater should be installed for this app's full functionality.
 
-#Usage
+# Usage
 
 Log in and out of the is hardcoded at this moment, though I will look to add authentication at a later date.
 A user is presented with list of available articles on the first screen. Clicking on an article will load that article and give extra functionality in the form of adding or deleting a comment or liking the current article. Articles displayed on the main screen can be ordered by comment count, date and likes. The user can also narrow the search down to articles on a selected topic using the drop down in the main nav bar.
