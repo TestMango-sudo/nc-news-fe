@@ -2,7 +2,7 @@ function Header({ currentUser }) {
 
     return (
         <header className="header">
-            <img src="../src/images/colour-logo.png" alt="NC-News-logo" id="logo"></img>
+            <img src="./assets/colour-logo.png" alt="NC-News-logo" id="logo"></img>
             <div>
                 <h1 id="site-name">Northcoders News</h1> 
                 <p id="site-tag">The only place to come for everything Northcoders</p>
